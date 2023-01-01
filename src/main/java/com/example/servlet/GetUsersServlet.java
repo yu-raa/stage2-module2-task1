@@ -17,6 +17,6 @@ public class GetUsersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doGet(req, resp);
         Set<User> users = Warehouse.getInstance().getUsers();
-        resp.addHeader("users", users.toString());
+        req.setAttribute("users", users);
     }
 }

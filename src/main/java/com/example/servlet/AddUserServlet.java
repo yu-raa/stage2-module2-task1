@@ -16,10 +16,10 @@ public class AddUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doPost(req, resp);
-        User user = new User((String)req.getAttribute("firstName"), (String)req.getAttribute("lastName"));
+        User user = new User(req.getParameter("firstName"), req.getParameter("lastName"));
         if (user.getFirstName() != null && user.getLastName() != null) {
             Warehouse.getInstance().addUser(user);
         }
-        resp.addHeader("user", (String)req.getAttribute("user"));
+        resp.addHeader("user", req.getParameter("user"));
     }
 }
